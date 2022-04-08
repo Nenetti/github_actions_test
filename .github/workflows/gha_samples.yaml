@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        required: true
+        description: ログレベル
+        default: warning
+      tags:
 
 jobs:
   numpy-test:
@@ -17,6 +24,10 @@ jobs:
           python-version: '3.8'
           architecture: 'x64'
 
+      - name: Workflow Dispatch
+        run: |
+          echo "Log level: ${{ github.event.inputs.logLevel }}"
+          echo "Tags: ${{ github.event.inputs.tags }}"
       # Python バージョンチェック
       - name: Get Python version
         run: |
