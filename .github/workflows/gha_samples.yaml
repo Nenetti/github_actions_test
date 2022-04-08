@@ -20,13 +20,13 @@ jobs:
 
       # Python バージョンチェック
       - name: Get Python version
-        run:
+        run: |
           python -V
           pip -V
 
       # pipで環境構築
-      #        - name: Install dependencies
-      #          run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
       # テストコードの実行
       - name: Run Python
